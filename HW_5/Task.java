@@ -33,7 +33,7 @@ public class Task {
         System.out.println(phoneHashMap);
     }
 
-    private void getPhoneBook(String input) {
+    public void getPhoneBook(String input) {
         String[] s = input.split(" ");
 
         if (phoneHashMap.containsKey(s[0])) {
@@ -53,16 +53,15 @@ public class Task {
         Collections.sort(numbersPhone);
         Collections.reverse(numbersPhone);
 
-        int count = 0;
-        for (int i = 0; i < numbersPhone.size(); i++) {
+        int i = 0;
+        while (i < numbersPhone.size()) {
             for (Map.Entry<String, ArrayList<String>> p : phoneHashMap.entrySet()) {
                 if (p.getValue().size() == numbersPhone.get(i)) {
-                    count++;
-                    if (count <= phoneHashMap.size()) {
-                        System.out.println(p);
-                    } else {
-                        break;
-                    }
+                    System.out.println(p);
+                    i++;
+                }
+                if (i == numbersPhone.size()) {
+                    break;
                 }
             }
         }
